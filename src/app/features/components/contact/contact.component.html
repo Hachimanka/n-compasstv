@@ -29,20 +29,45 @@
       </div>
     </div>
 
-    <form class="contact__form">
-      @for (field of fields; track field.label) {
-        <label class="contact__field">
-          <span>{{ field.label }}</span>
+    <form class="contact__form" (ngSubmit)="onSubmit()">
+      <ntv-input
+        label="Full name"
+        placeholder="Jane Rivera"
+        type="text"
+        variant="primary"
+        [(ngModel)]="fullName"
+        name="fullName"
+      />
 
-          @if (field.type === 'textarea') {
-            <textarea [attr.name]="field.label.toLowerCase()" [placeholder]="field.placeholder" rows="5"></textarea>
-          } @else {
-            <input [attr.type]="field.type" [attr.name]="field.label.toLowerCase()" [placeholder]="field.placeholder" />
-          }
-        </label>
-      }
+      <ntv-input
+        label="Email"
+        placeholder="jane@email.com"
+        type="email"
+        variant="primary"
+        [(ngModel)]="email"
+        name="email"
+      />
 
-      <button class="contact__submit" type="button">Schedule my call</button>
+      <ntv-input
+        label="Target market"
+        placeholder="City, State"
+        type="text"
+        variant="primary"
+        [(ngModel)]="targetMarket"
+        name="targetMarket"
+      />
+
+      <ntv-textarea
+        label="What are you hoping to build?"
+        placeholder="Tell us a bit about your goals"
+        variant="primary"
+        [(ngModel)]="goals"
+        name="goals"
+      />
+
+      <ntv-button type="submit" variant="accent" rounded="full" size="lg">
+        Schedule my call
+      </ntv-button>
     </form>
   </div>
 </section>

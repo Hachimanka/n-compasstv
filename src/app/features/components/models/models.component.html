@@ -26,7 +26,7 @@
         <h2>{{ row.title }}</h2>
         <p>{{ row.description }}</p>
         <p class="models__support">{{ row.supportText }}</p>
-        <a class="models__button" href="#contact">Learn More</a>
+        <ntv-button variant="accent" rounded="full" size="md" (buttonClick)="scrollToContact()">Learn More</ntv-button>
       </div>
     </article>
   }

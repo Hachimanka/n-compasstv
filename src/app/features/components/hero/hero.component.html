@@ -13,7 +13,9 @@
       }
     </nav>
 
-    <a class="hero__cta hero__cta--desktop" href="#contact">Call us Today!</a>
+    <ntv-button class="hero__cta hero__cta--desktop" variant="accent" rounded="full" size="md" (buttonClick)="scrollToContact()">
+      Call us Today!
+    </ntv-button>
 
     <button class="hero__menu-button" type="button" aria-label="Toggle navigation menu" [attr.aria-expanded]="mobileMenuOpen()" (click)="toggleMobileMenu()">
       <span></span>
@@ -27,7 +29,9 @@
       @for (link of navLinks; track link.label) {
         <a class="hero__mobile-nav-link" [href]="link.href" (click)="closeMobileMenu()">{{ link.label }}</a>
       }
-      <a class="hero__mobile-cta" href="#contact" (click)="closeMobileMenu()">Call Us Today!</a>
+      <ntv-button class="hero__mobile-cta" variant="accent" rounded="full" size="md" (buttonClick)="scrollToContactAndCloseMenu()">
+        Call Us Today!
+      </ntv-button>
     </div>
   }
 
@@ -54,14 +58,14 @@
 
     <div class="hero__actions">
       @for (action of actions; track action.label) {
-        <a
-          class="hero__action"
-          [class.hero__action--primary]="action.variant === 'primary'"
-          [class.hero__action--secondary]="action.variant === 'secondary'"
-          [href]="action.href"
+        <ntv-button
+          [variant]="action.variant === 'primary' ? 'accent' : 'outline'"
+          rounded="full"
+          size="md"
+          (buttonClick)="scrollToContact()"
         >
           {{ action.label }}
-        </a>
+        </ntv-button>
       }
     </div>
   </div>
