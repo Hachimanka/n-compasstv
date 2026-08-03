@@ -1,0 +1,115 @@
+:host {
+  display: block;
+}
+
+.testimonials {
+  padding: 1.25rem clamp(1rem, 4vw, 9.5rem) 5rem;
+  background: #050d18;
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: min(100%, 68rem);
+    margin: 0 auto 2rem;
+  }
+
+  &__eyebrow span {
+    color: var(--color-accent);
+    font: 400 0.75rem/1 var(--font-mono);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  &__heading h2 {
+    margin: 0;
+    color: var(--color-text);
+    font: 400 clamp(2.5rem, 5vw, 3.25rem)/1.05 var(--font-display);
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+
+  &__viewport {
+    overflow: hidden;
+    width: min(100%, 68rem);
+    margin: 0 auto;
+  }
+
+  &__track {
+    display: flex;
+    gap: 1.25rem;
+    width: max-content;
+    will-change: transform;
+    animation: testimonials-marquee 24s linear infinite;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex: 0 0 clamp(18rem, 28vw, 22rem);
+    min-height: 15rem;
+    padding: 2rem;
+    border: 1px solid rgba(225, 230, 228, 0.85);
+    border-radius: 1rem;
+    background: #e4e2dd;
+  }
+
+  &__quote {
+    margin: 0;
+    color: #001524;
+    font: 400 1rem/1.7 var(--font-body);
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__name {
+    color: #001524;
+    font: 700 0.95rem/1.2 var(--font-body);
+  }
+
+  &__location {
+    color: rgba(0, 21, 36, 0.64);
+    font: 400 0.8rem/1 var(--font-mono);
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (max-width: 1199px) {
+  .testimonials {
+    &__track {
+      animation: none;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    &__card {
+      flex-basis: 100%;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .testimonials {
+    padding-inline: 1rem;
+
+    &__card {
+      flex-basis: min(18rem, 85vw);
+    }
+  }
+}
+
+@keyframes testimonials-marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - 0.625rem));
+  }
+}

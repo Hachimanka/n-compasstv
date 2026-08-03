@@ -1,0 +1,312 @@
+@keyframes hero-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-12px);
+  }
+  40% {
+    transform: translateY(-6px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+:host {
+  display: block;
+}
+
+.hero {
+  position: relative;
+  overflow: clip;
+  min-height: 56.25rem;
+  padding: 1rem 0 4rem;
+  isolation: isolate;
+  background: #0d0d0d;
+
+  &__background,
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__background {
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  &__overlay {
+    background:
+      linear-gradient(180deg, rgba(5, 13, 24, 0.16) 0%, rgba(5, 13, 24, 0.58) 58%, rgba(5, 13, 24, 0.92) 100%),
+      linear-gradient(135deg, rgba(14, 32, 53, 0.2) 0%, rgba(13, 13, 13, 0.1) 100%);
+  }
+
+  &__header,
+  &__content {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 90rem);
+    margin: 0 auto;
+    padding-inline: clamp(1rem, 4vw, 9.5rem);
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 6rem;
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__logo {
+    width: clamp(11rem, 18vw, 17rem);
+    height: auto;
+    object-fit: contain;
+    transition: transform 200ms ease;
+    cursor: pointer;
+
+    &:hover {
+      animation: hero-bounce 0.6s ease;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1rem, 2vw, 2rem);
+  }
+
+  &__nav-link {
+    position: relative;
+    padding-bottom: 4px;
+    color: var(--color-text);
+    text-decoration: none;
+    font: 500 0.875rem/1.2 var(--font-body);
+    letter-spacing: 0.01em;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--color-accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 300ms ease;
+    }
+
+    &:hover {
+      color: var(--color-accent);
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__cta,
+  &__mobile-cta,
+  &__action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.875rem;
+    padding: 0.85rem 1.5rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease;
+  }
+
+  &__cta {
+    justify-self: end;
+    background: var(--color-accent);
+    color: #0d0d0d;
+    font: 700 0.875rem/1 var(--font-body);
+    box-shadow: 0 0.75rem 1.5rem rgba(125, 201, 49, 0.18);
+
+    &:hover {
+      animation: hero-bounce 0.6s ease;
+    }
+  }
+
+  &__menu-button {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    background: rgba(0, 21, 36, 0.55);
+    cursor: pointer;
+
+    span {
+      display: block;
+      width: 1rem;
+      height: 0.125rem;
+      border-radius: 999px;
+      background: var(--color-text);
+    }
+  }
+
+  &__mobile-nav {
+    position: relative;
+    z-index: 2;
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: min(100% - 2rem, 24rem);
+    margin: 0 auto 1rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1.25rem;
+    background: rgba(5, 13, 24, 0.96);
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(0.75rem);
+  }
+
+  &__mobile-nav-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font: 500 1rem/1.2 var(--font-body);
+  }
+
+  &__mobile-cta {
+    background: var(--color-accent);
+    color: #0d0d0d;
+    font: 700 0.875rem/1 var(--font-body);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-top: clamp(6rem, 18vh, 10rem);
+  }
+
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+
+    span {
+      color: var(--color-accent);
+      font: 400 0.75rem/1 var(--font-mono);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+  }
+
+  &__eyebrow-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    flex: 0 0 auto;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    margin: 0;
+    color: var(--color-text);
+    font: 400 clamp(3.25rem, 8vw, 5rem) / 0.95 var(--font-display);
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  &__title-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  &__title-line--accent {
+    color: var(--color-accent);
+  }
+
+  &__description {
+    max-width: 31rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.88);
+    font: 400 0.95rem/1.65 var(--font-body);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+  }
+
+  &__action {
+    font: 700 0.875rem/1 var(--font-body);
+  }
+
+  &__action--primary {
+    background: var(--color-accent);
+    color: #0d0d0d;
+    box-shadow: 0 0.75rem 1.5rem rgba(125, 201, 49, 0.18);
+  }
+
+  &__action--secondary {
+    background: rgba(255, 255, 255, 0.96);
+    color: #001524;
+    border-color: rgba(0, 21, 36, 0.2);
+  }
+}
+
+@media (max-width: 1199px) {
+  .hero {
+    &__header {
+      grid-template-columns: auto 1fr auto;
+    }
+
+    &__nav--desktop,
+    &__cta--desktop {
+      display: none;
+    }
+
+    &__menu-button {
+      display: inline-flex;
+      justify-self: end;
+    }
+
+    &__mobile-nav {
+      display: flex;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: auto;
+    padding-top: 0.75rem;
+
+    &__header,
+    &__content {
+      padding-inline: 1rem;
+    }
+
+    &__content {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    &__title {
+      font-size: clamp(2.6rem, 14vw, 4rem);
+    }
+  }
+}

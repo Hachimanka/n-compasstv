@@ -1,0 +1,36 @@
+<section class="services" id="services">
+  <div class="services__intro">
+    <h2>Go Beyond the Screens</h2>
+    <p>
+      Don’t stop at screens! We help take your dealership to the next level with Multichannel Advertising. This allows you to be a true omni-channel full scale digital marketing agency! We do all of the work in-house, provide analytics and reports to your clients, AND we meet with them every month to explain the results and help you increase their monthly ad spend.
+    </p>
+  </div>
+
+  <div class="services__rail" aria-label="Services cards">
+    <button class="services__arrow services__arrow--prev" type="button" aria-label="Previous services">
+      <img [src]="serviceRailIconSrc" alt="" aria-hidden="true" />
+    </button>
+
+    <div class="services__viewport">
+      <div class="services__track">
+        @for (card of carouselCards; track $index) {
+          <article class="services__card" [style.border-color]="card.borderColor">
+            <div class="services__media">
+              <img [src]="card.imageSrc" [alt]="card.imageAlt" />
+            </div>
+
+            <div class="services__content">
+              <h3>{{ card.title }}</h3>
+              <p>{{ card.description }}</p>
+              <a class="services__button" href="#contact">Learn More</a>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+
+    <button class="services__arrow services__arrow--next" type="button" aria-label="Next services">
+      <img [src]="serviceRailIconSrc" alt="" aria-hidden="true" />
+    </button>
+  </div>
+</section>

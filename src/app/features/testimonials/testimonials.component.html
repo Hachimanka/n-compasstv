@@ -1,0 +1,23 @@
+<section class="testimonials">
+  <div class="testimonials__heading">
+    <div class="testimonials__eyebrow">
+      <span>DEALER STORIES</span>
+    </div>
+    <h2>What our dealers say</h2>
+  </div>
+
+  <div class="testimonials__viewport" aria-label="Dealer stories carousel">
+    <div class="testimonials__track">
+      @for (testimonial of carouselTestimonials; track $index) {
+        <article class="testimonials__card">
+          <p class="testimonials__quote">“{{ testimonial.quote }}”</p>
+
+          <div class="testimonials__meta">
+            <span class="testimonials__name">{{ testimonial.name }}</span>
+            <span class="testimonials__location">{{ testimonial.location }}</span>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

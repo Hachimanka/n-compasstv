@@ -1,0 +1,45 @@
+<footer class="footer">
+  <div class="footer__columns">
+    <div class="footer__brand">
+      <img class="footer__logo" [src]="logoSrc" alt="N-Compass TV" />
+      <p>
+        Building the Indoor Digital Out-of-Home category since 2008. 4,000+ screens, 250+ cities, one dealership at a time.
+      </p>
+
+      <div class="footer__socials" aria-label="Footer social links">
+        @for (socialLink of socialLinks; track socialLink.label) {
+          <a class="footer__social" [href]="socialLink.href" [attr.aria-label]="socialLink.label">
+            <svg viewBox="0 0 24 24">
+              <use [attr.href]="iconSpritePath + '#icon-' + socialLink.iconName"></use>
+            </svg>
+          </a>
+        }
+      </div>
+    </div>
+
+    @for (group of groups; track group.title) {
+      <div class="footer__links">
+        <h2>{{ group.title }}</h2>
+        @for (link of group.links; track link) {
+          <a href="#hero">{{ link }}</a>
+        }
+      </div>
+    }
+
+    <div class="footer__links footer__links--contact">
+      <h2>Contact</h2>
+      <p>1546 Cole Blvd Bldg 5, Suite 100</p>
+      <p>Lakewood, CO 80401</p>
+      <a href="mailto:info@n-compass.biz">info@n-compass.biz</a>
+    </div>
+  </div>
+
+  <div class="footer__legal">
+    <p>© {{ year }} N-Compass TV. All rights reserved.</p>
+    <div class="footer__legal-links">
+      <a href="#hero">Privacy Policy</a>
+      <a href="#hero">Terms of Service</a>
+      <a href="#hero">Accessibility</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,33 @@
+<section class="models" id="about">
+  <img class="models__background" [src]="backgroundSrc" alt="" aria-hidden="true" />
+
+  @for (row of rows; track row.title; let idx = $index) {
+    <article #rowRef class="models__row" [class.models__row--reverse]="row.reverse">
+      <div class="models__media">
+        @if (idx === 1 && videoPlaying()) {
+          <iframe
+            class="models__video-iframe"
+            [src]="videoSrc"
+            title="N-Compass TV Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        } @else {
+          <img [src]="row.imageSrc" [alt]="row.imageAlt" />
+          @if (idx === 1) {
+            <div class="models__play-overlay" (click)="playVideo()">
+              <span class="models__play-icon"></span>
+            </div>
+          }
+        }
+      </div>
+
+      <div class="models__content">
+        <h2>{{ row.title }}</h2>
+        <p>{{ row.description }}</p>
+        <p class="models__support">{{ row.supportText }}</p>
+        <a class="models__button" href="#contact">Learn More</a>
+      </div>
+    </article>
+  }
+</section>

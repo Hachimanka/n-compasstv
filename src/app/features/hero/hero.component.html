@@ -1,0 +1,68 @@
+<section class="hero" id="hero">
+  <img class="hero__background" [src]="heroBackgroundSrc" alt="" aria-hidden="true" />
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <header class="hero__header">
+    <a class="hero__brand" href="#hero" aria-label="N-Compass TV home">
+      <img class="hero__logo" [src]="brandLogoSrc" alt="N-Compass TV" />
+    </a>
+
+    <nav class="hero__nav hero__nav--desktop" aria-label="Primary navigation">
+      @for (link of navLinks; track link.label) {
+        <a class="hero__nav-link" [href]="link.href">{{ link.label }}</a>
+      }
+    </nav>
+
+    <a class="hero__cta hero__cta--desktop" href="#contact">Call us Today!</a>
+
+    <button class="hero__menu-button" type="button" aria-label="Toggle navigation menu" [attr.aria-expanded]="mobileMenuOpen()" (click)="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  @if (mobileMenuOpen()) {
+    <div class="hero__mobile-nav" role="dialog" aria-label="Mobile navigation">
+      @for (link of navLinks; track link.label) {
+        <a class="hero__mobile-nav-link" [href]="link.href" (click)="closeMobileMenu()">{{ link.label }}</a>
+      }
+      <a class="hero__mobile-cta" href="#contact" (click)="closeMobileMenu()">Call Us Today!</a>
+    </div>
+  }
+
+  <div class="hero__content">
+    <div class="hero__eyebrow">
+      <img class="hero__eyebrow-dot" [src]="eyebrowDotSrc" alt="" aria-hidden="true" />
+      <span>DEALER OPPORTUNITY</span>
+    </div>
+
+    <h1 class="hero__title" aria-label="Community Focused Indoor Digital Billboards">
+      @for (line of titleLines; track line.text) {
+        <span
+          class="hero__title-line"
+          [class.hero__title-line--accent]="line.accent"
+        >
+          {{ getVisibleTitleText($index) }}
+        </span>
+      }
+    </h1>
+
+    <p class="hero__description">
+      N-Compass TV's business model boasts high revenue potential and low startup costs, making it an attractive option for aspiring entrepreneurs. Ready to start your own Digital Marketing Company?
+    </p>
+
+    <div class="hero__actions">
+      @for (action of actions; track action.label) {
+        <a
+          class="hero__action"
+          [class.hero__action--primary]="action.variant === 'primary'"
+          [class.hero__action--secondary]="action.variant === 'secondary'"
+          [href]="action.href"
+        >
+          {{ action.label }}
+        </a>
+      }
+    </div>
+  </div>
+</section>

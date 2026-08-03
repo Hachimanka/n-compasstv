@@ -1,0 +1,48 @@
+<section class="contact" id="contact">
+  <div class="contact__shell">
+    <div class="contact__info">
+      <div class="contact__heading">
+        <div class="contact__eyebrow">
+          <span>CONTACT</span>
+        </div>
+        <h2>Fill out this form to schedule a call with our team!</h2>
+      </div>
+
+      <p class="contact__description">
+        Our indoor billboards are popular in communities throughout the country. From restaurants to gyms, doctor's offices to auto repair, you will be seen wherever your customers go!
+      </p>
+
+      <div class="contact__details">
+        @for (detail of details; track detail.label) {
+          <div class="contact__detail">
+            <div class="contact__detail-label-wrap">
+              <span class="contact__detail-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <use [attr.href]="iconSpritePath + '#icon-' + detail.iconName"></use>
+                </svg>
+              </span>
+              <span class="contact__detail-label">{{ detail.label }}</span>
+            </div>
+            <span class="contact__detail-value">{{ detail.value }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <form class="contact__form">
+      @for (field of fields; track field.label) {
+        <label class="contact__field">
+          <span>{{ field.label }}</span>
+
+          @if (field.type === 'textarea') {
+            <textarea [attr.name]="field.label.toLowerCase()" [placeholder]="field.placeholder" rows="5"></textarea>
+          } @else {
+            <input [attr.type]="field.type" [attr.name]="field.label.toLowerCase()" [placeholder]="field.placeholder" />
+          }
+        </label>
+      }
+
+      <button class="contact__submit" type="button">Schedule my call</button>
+    </form>
+  </div>
+</section>
