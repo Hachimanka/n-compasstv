@@ -30,40 +30,52 @@
     </div>
 
     <form class="contact__form" (ngSubmit)="onSubmit()">
-      <ntv-input
-        label="Full name"
-        placeholder="Jane Rivera"
-        type="text"
-        variant="primary"
-        [(ngModel)]="fullName"
-        name="fullName"
-      />
+      <div class="contact__field">
+        <label class="contact__label" for="fullName">Full name</label>
+        <ntv-input
+          placeholder="Jane Rivera"
+          type="text"
+          variant="primary"
+          [(ngModel)]="fullName"
+          name="fullName"
+          id="fullName"
+        />
+      </div>
 
-      <ntv-input
-        label="Email"
-        placeholder="jane@email.com"
-        type="email"
-        variant="primary"
-        [(ngModel)]="email"
-        name="email"
-      />
+      <div class="contact__field">
+        <label class="contact__label" for="email">Email</label>
+        <ntv-input
+          placeholder="jane@email.com"
+          type="email"
+          variant="primary"
+          [(ngModel)]="email"
+          name="email"
+          id="email"
+        />
+      </div>
 
-      <ntv-input
-        label="Target market"
-        placeholder="City, State"
-        type="text"
-        variant="primary"
-        [(ngModel)]="targetMarket"
-        name="targetMarket"
-      />
+      <div class="contact__field">
+        <label class="contact__label" for="targetMarket">Target Market</label>
+        <ntv-input
+          placeholder="City, State"
+          type="text"
+          variant="primary"
+          [(ngModel)]="targetMarket"
+          name="targetMarket"
+          id="targetMarket"
+        />
+      </div>
 
-      <ntv-textarea
-        label="What are you hoping to build?"
-        placeholder="Tell us a bit about your goals"
-        variant="primary"
-        [(ngModel)]="goals"
-        name="goals"
-      />
+      <div class="contact__field">
+        <label class="contact__label" for="goals">What are you hoping to build?</label>
+        <ntv-textarea
+          placeholder="Tell us a bit about your goals"
+          variant="primary"
+          [(ngModel)]="goals"
+          name="goals"
+          id="goals"
+        />
+      </div>
 
       <ntv-button type="submit" variant="accent" rounded="full" size="lg">
         Schedule my call

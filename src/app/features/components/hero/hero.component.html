@@ -13,9 +13,9 @@
       }
     </nav>
 
-    <ntv-button class="hero__cta hero__cta--desktop" variant="accent" rounded="full" size="md" (buttonClick)="scrollToContact()">
+    <button class="hero__cta hero__cta--desktop" type="button" (click)="scrollToContact()">
       Call us Today!
-    </ntv-button>
+    </button>
 
     <button class="hero__menu-button" type="button" aria-label="Toggle navigation menu" [attr.aria-expanded]="mobileMenuOpen()" (click)="toggleMobileMenu()">
       <span></span>

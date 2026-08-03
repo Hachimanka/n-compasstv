@@ -43,7 +43,6 @@ export class HeroComponent implements OnInit, OnDestroy {
   /** Action buttons for the hero content */
   protected readonly actions: ReadonlyArray<HeroAction> = [
     { label: 'Learn More', href: '#about', variant: 'primary' },
-    { label: 'Call Us Today!', href: '#contact', variant: 'secondary' },
   ];
 
   /** Title lines for typewriter animation */

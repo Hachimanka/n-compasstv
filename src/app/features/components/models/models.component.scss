@@ -179,6 +179,17 @@
     font: 700 0.875rem/1 var(--font-body);
     text-decoration: none;
     box-shadow: 0 0.75rem 1.5rem rgba(125, 201, 49, 0.18);
+    cursor: pointer;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 1rem 2rem rgba(125, 201, 49, 0.28);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
   }
 }
 

@@ -9,7 +9,6 @@ export const HERO_NAV_LINKS = [
 
 export const HERO_ACTIONS = [
   { label: 'Learn More', href: '#about', variant: 'primary' as const },
-  { label: 'Call Us Today!', href: '#contact', variant: 'secondary' as const },
 ] as const;
 
 export const HERO_TITLE_LINES = [

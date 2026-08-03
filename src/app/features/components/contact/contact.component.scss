@@ -104,6 +104,12 @@
     box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.18);
   }
 
+  &__label {
+    color: rgba(255, 255, 255, 0.85);
+    font: 600 0.85rem/1 var(--font-body);
+    letter-spacing: 0.02em;
+  }
+
   &__field {
     display: flex;
     flex-direction: column;
@@ -146,6 +152,17 @@
     color: #001524;
     font: 700 0.95rem/1 var(--font-body);
     box-shadow: 0 0.75rem 1.5rem rgba(125, 201, 49, 0.18);
+    cursor: pointer;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 1rem 2rem rgba(125, 201, 49, 0.28);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
   }
 }
 

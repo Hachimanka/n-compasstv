@@ -154,12 +154,17 @@
     border-radius: 999px;
     text-decoration: none;
     font: 700 0.875rem/1 var(--font-body);
-    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease;
+    cursor: pointer;
+    transition: transform 200ms ease, box-shadow 200ms ease;
 
     &:hover,
     &:focus-visible {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
       outline: none;
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
 
@@ -167,11 +172,19 @@
     background: var(--color-accent);
     color: #001524;
     box-shadow: 0 0.75rem 1.5rem rgba(125, 201, 49, 0.18);
+
+    &:hover {
+      box-shadow: 0 1rem 2rem rgba(125, 201, 49, 0.28);
+    }
   }
 
   &__button--apple {
     background: #fb3c56;
     color: #ffffff;
+
+    &:hover {
+      box-shadow: 0 1rem 2rem rgba(251, 60, 86, 0.28);
+    }
   }
 }
 
