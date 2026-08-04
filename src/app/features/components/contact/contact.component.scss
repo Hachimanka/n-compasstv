@@ -102,6 +102,37 @@
     border-radius: 1.25rem;
     background: #001524;
     box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.18);
+
+    ntv-input,
+    ntv-textarea {
+      --input-variant-color: rgba(255, 255, 255, 0.4);
+      --input-focus-color: rgba(255, 255, 255, 0.7);
+      --input-text-color: #ffffff;
+      --input-placeholder-color: rgba(255, 255, 255, 0.4);
+      --input-background-color: rgba(255, 255, 255, 0.08);
+      --input-hover-border-color: rgba(255, 255, 255, 0.6);
+      --input-focus-border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    ntv-textarea::ng-deep .textarea__wrapper {
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+
+      &:focus-within {
+        border-color: rgba(255, 255, 255, 0.7);
+        box-shadow: none;
+        ring-color: rgba(255, 255, 255, 0.3);
+      }
+
+      textarea {
+        color: #ffffff;
+
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.4);
+        }
+      }
+    }
   }
 
   &__label {
