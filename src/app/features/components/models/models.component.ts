@@ -1,7 +1,16 @@
 import { AfterViewInit, Component, ElementRef, inject, OnDestroy, QueryList, signal, ViewChildren } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Button } from '@ntv360/component-pantry';
-import { ModelRow } from './models.types';
+
+/** About section row data */
+export interface ModelRow {
+  title: string;
+  description: string;
+  supportText: string;
+  imageSrc: string;
+  imageAlt: string;
+  reverse: boolean;
+}
 
 /**
  * Models/About section component with scroll-triggered animations and YouTube video embed.

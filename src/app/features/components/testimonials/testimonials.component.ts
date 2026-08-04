@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { Testimonial } from './testimonials.types';
+
+/** Testimonial data */
+export interface Testimonial {
+  quote: string;
+  name: string;
+  location: string;
+}
 
 /**
  * Testimonials section component with marquee carousel of dealer testimonials.

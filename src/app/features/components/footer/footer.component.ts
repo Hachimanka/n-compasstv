@@ -1,5 +1,17 @@
 import { Component } from '@angular/core';
-import { FooterGroup, FooterSocialLink } from './footer.types';
+
+/** Footer link group */
+export interface FooterGroup {
+  title: string;
+  links: ReadonlyArray<string>;
+}
+
+/** Footer social media link */
+export interface FooterSocialLink {
+  label: string;
+  href: string;
+  iconName: 'linkedin' | 'instagram' | 'facebook' | 'youtube';
+}
 
 /**
  * Footer component with navigation links, social links, and copyright.

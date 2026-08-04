@@ -1,6 +1,14 @@
 import { Component } from '@angular/core';
 import { Button } from '@ntv360/component-pantry';
-import { ServiceCard } from './services.types';
+
+/** Service card data */
+export interface ServiceCard {
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  borderColor: string;
+}
 
 /**
  * Services section component with marquee carousel of service cards.

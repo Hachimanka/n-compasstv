@@ -1,8 +1,26 @@
-import { Component, OnDestroy, OnInit, inject, signal } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject, signal } from '@angular/core';
 import { Button } from '@ntv360/component-pantry';
 import { StrapiService } from '../../../core/services/strapi.service';
 import { HeroData } from '../../../core/models/site.models';
-import { HeroNavLink, HeroAction, HeroTitleLine } from './hero.types';
+
+/** Navigation link configuration */
+export interface HeroNavLink {
+  label: string;
+  href: string;
+}
+
+/** Hero action button configuration */
+export interface HeroAction {
+  label: string;
+  href: string;
+  variant: 'primary' | 'secondary';
+}
+
+/** Hero title line with accent flag */
+export interface HeroTitleLine {
+  text: string;
+  accent: boolean;
+}
 
 /**
  * Hero section component with typewriter animation, navigation, and CTA buttons.
@@ -16,6 +34,8 @@ import { HeroNavLink, HeroAction, HeroTitleLine } from './hero.types';
   styleUrl: './hero.component.scss',
 })
 export class HeroComponent implements OnInit, OnDestroy {
+  @ViewChild('bgLogo') bgLogoRef!: ElementRef<HTMLImageElement>;
+
   /** Mobile menu open state */
   protected readonly mobileMenuOpen = signal<boolean>(false);
 
@@ -24,10 +44,9 @@ export class HeroComponent implements OnInit, OnDestroy {
 
   private readonly strapi = inject(StrapiService);
 
-  protected readonly heroBackgroundSrc =
-    'https://www.figma.com/api/mcp/asset/2fac6da4-cd33-40be-bece-c34ad5de535b';
-  protected readonly brandLogoSrc =
-    'https://www.figma.com/api/mcp/asset/1e65a087-9159-48fd-a7ff-e9181df2fdb5';
+  protected readonly heroBackgroundSrc = 'backgrounds/herobg.png';
+  protected readonly heroBgLogoSrc = 'backgrounds/herobglogo.png';
+  protected readonly brandLogoSrc = 'backgrounds/n-compasstvlogo.png';
   protected readonly eyebrowDotSrc =
     'https://www.figma.com/api/mcp/asset/db3625d5-ad3f-4c7b-bd12-84ef8a4cf719';
 
@@ -59,6 +78,10 @@ export class HeroComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.startTypewriterAnimation();
     this.fetchFromStrapi();
+
+    setTimeout(() => {
+      this.bgLogoRef?.nativeElement?.classList.add('hero__bg-logo--loaded');
+    }, 1800);
   }
 
   /** Clean up intervals on destroy */

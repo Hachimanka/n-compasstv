@@ -2,7 +2,13 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Input, Textarea, Button } from '@ntv360/component-pantry';
 import { StrapiService } from '../../../core/services/strapi.service';
-import { ContactDetail } from './contact.types';
+
+/** Contact detail with icon */
+export interface ContactDetail {
+  label: string;
+  value: string;
+  iconName: 'location' | 'phone' | 'mail';
+}
 
 /**
  * Contact section component with form using Component Pantry form components.

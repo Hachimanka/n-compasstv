@@ -4,9 +4,8 @@
 
 .hero {
   position: relative;
-  overflow: clip;
   min-height: 56.25rem;
-  padding: 1rem 0 4rem;
+  padding: 8rem 0 4rem;
   isolation: isolate;
   background: #0d0d0d;
 
@@ -20,6 +19,7 @@
 
   &__background {
     object-fit: cover;
+    object-position: center 40%;
     pointer-events: none;
   }
 
@@ -27,6 +27,27 @@
     background:
       linear-gradient(180deg, rgba(5, 13, 24, 0.16) 0%, rgba(5, 13, 24, 0.58) 58%, rgba(5, 13, 24, 0.92) 100%),
       linear-gradient(135deg, rgba(14, 32, 53, 0.2) 0%, rgba(13, 13, 13, 0.1) 100%);
+  }
+
+  &__bg-logo-wrap {
+    display: contents;
+  }
+
+  &__bg-logo {
+    width: clamp(24rem, 32vw, 40rem);
+    height: auto;
+    object-fit: contain;
+    transform: translateX(-2rem);
+    cursor: pointer;
+    animation: logoGrow 800ms ease-out forwards, logoSpin 1s ease-in-out 800ms forwards;
+
+    &--loaded {
+      animation: none;
+
+      &:hover {
+        animation: logoSpin 1s ease-in-out;
+      }
+    }
   }
 
   &__header,
@@ -39,11 +60,22 @@
   }
 
   &__header {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
     display: grid;
     grid-template-columns: auto 1fr auto auto;
     align-items: center;
     gap: 1.5rem;
-    min-height: 6rem;
+    min-height: 4.5rem;
+    width: min(100% - 2rem, 90rem);
+    z-index: 100;
+    background: rgba(13, 13, 13, 0.85);
+    backdrop-filter: blur(0.75rem);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.5rem;
+    padding-inline: clamp(1rem, 4vw, 9.5rem);
   }
 
   &__brand {
@@ -155,13 +187,15 @@
   }
 
   &__mobile-nav {
-    position: relative;
-    z-index: 2;
+    position: fixed;
+    top: 6.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
     display: none;
     flex-direction: column;
     gap: 0.75rem;
     width: min(100% - 2rem, 24rem);
-    margin: 0 auto 1rem;
     padding: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 1.25rem;
@@ -192,11 +226,21 @@
   }
 
   &__content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    width: min(100%, 90rem);
+    margin: 0 auto;
+    padding-inline: clamp(1rem, 4vw, 9.5rem);
+    padding-top: clamp(2rem, 10vh, 6rem);
+  }
+
+  &__content-text {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
-    padding-top: clamp(6rem, 18vh, 10rem);
   }
 
   &__eyebrow {
@@ -284,6 +328,26 @@
   }
 }
 
+@keyframes logoGrow {
+  0% {
+    opacity: 0;
+    transform: translateX(-2rem) scale(0.3);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-2rem) scale(1);
+  }
+}
+
+@keyframes logoSpin {
+  0% {
+    transform: translateX(-2rem) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-2rem) rotate(360deg);
+  }
+}
+
 @media (max-width: 1199px) {
   .hero {
     &__header {
@@ -302,6 +366,14 @@
 
     &__mobile-nav {
       display: flex;
+    }
+
+    &__content {
+      grid-template-columns: 1fr;
+    }
+
+    &__bg-logo {
+      display: none;
     }
   }
 }
@@ -323,6 +395,10 @@
 
     &__title {
       font-size: clamp(2.6rem, 14vw, 4rem);
+    }
+
+    &__bg-logo {
+      display: none;
     }
   }
 }

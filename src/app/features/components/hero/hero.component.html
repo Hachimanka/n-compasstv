@@ -1,72 +1,78 @@
+<header class="hero__header">
+  <a class="hero__brand" href="#hero" aria-label="N-Compass TV home" (click)="refreshPage($event)">
+    <img class="hero__logo" [src]="brandLogoSrc" alt="N-Compass TV" />
+  </a>
+
+  <nav class="hero__nav hero__nav--desktop" aria-label="Primary navigation">
+    @for (link of navLinks; track link.label) {
+      <a class="hero__nav-link" [href]="link.href">{{ link.label }}</a>
+    }
+  </nav>
+
+  <button class="hero__cta hero__cta--desktop" type="button" (click)="scrollToContact()">
+    Call us Today!
+  </button>
+
+  <button class="hero__menu-button" type="button" aria-label="Toggle navigation menu" [attr.aria-expanded]="mobileMenuOpen()" (click)="toggleMobileMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+@if (mobileMenuOpen()) {
+  <div class="hero__mobile-nav" role="dialog" aria-label="Mobile navigation">
+    @for (link of navLinks; track link.label) {
+      <a class="hero__mobile-nav-link" [href]="link.href" (click)="closeMobileMenu()">{{ link.label }}</a>
+    }
+    <ntv-button class="hero__mobile-cta" variant="accent" rounded="full" size="md" (buttonClick)="scrollToContactAndCloseMenu()">
+      Call Us Today!
+    </ntv-button>
+  </div>
+}
+
 <section class="hero" id="hero">
   <img class="hero__background" [src]="heroBackgroundSrc" alt="" aria-hidden="true" />
   <div class="hero__overlay" aria-hidden="true"></div>
 
-  <header class="hero__header">
-    <a class="hero__brand" href="#hero" aria-label="N-Compass TV home" (click)="refreshPage($event)">
-      <img class="hero__logo" [src]="brandLogoSrc" alt="N-Compass TV" />
-    </a>
-
-    <nav class="hero__nav hero__nav--desktop" aria-label="Primary navigation">
-      @for (link of navLinks; track link.label) {
-        <a class="hero__nav-link" [href]="link.href">{{ link.label }}</a>
-      }
-    </nav>
-
-    <button class="hero__cta hero__cta--desktop" type="button" (click)="scrollToContact()">
-      Call us Today!
-    </button>
-
-    <button class="hero__menu-button" type="button" aria-label="Toggle navigation menu" [attr.aria-expanded]="mobileMenuOpen()" (click)="toggleMobileMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </header>
-
-  @if (mobileMenuOpen()) {
-    <div class="hero__mobile-nav" role="dialog" aria-label="Mobile navigation">
-      @for (link of navLinks; track link.label) {
-        <a class="hero__mobile-nav-link" [href]="link.href" (click)="closeMobileMenu()">{{ link.label }}</a>
-      }
-      <ntv-button class="hero__mobile-cta" variant="accent" rounded="full" size="md" (buttonClick)="scrollToContactAndCloseMenu()">
-        Call Us Today!
-      </ntv-button>
-    </div>
-  }
-
   <div class="hero__content">
-    <div class="hero__eyebrow">
-      <img class="hero__eyebrow-dot" [src]="eyebrowDotSrc" alt="" aria-hidden="true" />
-      <span>DEALER OPPORTUNITY</span>
+    <div class="hero__content-text">
+      <div class="hero__eyebrow">
+        <img class="hero__eyebrow-dot" [src]="eyebrowDotSrc" alt="" aria-hidden="true" />
+        <span>DEALER OPPORTUNITY</span>
+      </div>
+
+      <h1 class="hero__title" aria-label="Community Focused Indoor Digital Billboards">
+        @for (line of titleLines; track line.text) {
+          <span
+            class="hero__title-line"
+            [class.hero__title-line--accent]="line.accent"
+          >
+            {{ getVisibleTitleText($index) }}
+          </span>
+        }
+      </h1>
+
+      <p class="hero__description">
+        N-Compass TV's business model boasts high revenue potential and low startup costs, making it an attractive option for aspiring entrepreneurs. Ready to start your own Digital Marketing Company?
+      </p>
+
+      <div class="hero__actions">
+        @for (action of actions; track action.label) {
+          <ntv-button
+            [variant]="action.variant === 'primary' ? 'accent' : 'outline'"
+            rounded="full"
+            size="md"
+            (buttonClick)="scrollToContact()"
+          >
+            {{ action.label }}
+          </ntv-button>
+        }
+      </div>
     </div>
 
-    <h1 class="hero__title" aria-label="Community Focused Indoor Digital Billboards">
-      @for (line of titleLines; track line.text) {
-        <span
-          class="hero__title-line"
-          [class.hero__title-line--accent]="line.accent"
-        >
-          {{ getVisibleTitleText($index) }}
-        </span>
-      }
-    </h1>
-
-    <p class="hero__description">
-      N-Compass TV's business model boasts high revenue potential and low startup costs, making it an attractive option for aspiring entrepreneurs. Ready to start your own Digital Marketing Company?
-    </p>
-
-    <div class="hero__actions">
-      @for (action of actions; track action.label) {
-        <ntv-button
-          [variant]="action.variant === 'primary' ? 'accent' : 'outline'"
-          rounded="full"
-          size="md"
-          (buttonClick)="scrollToContact()"
-        >
-          {{ action.label }}
-        </ntv-button>
-      }
+    <div class="hero__bg-logo-wrap">
+      <img class="hero__bg-logo" #bgLogo [src]="heroBgLogoSrc" alt="" aria-hidden="true" />
     </div>
   </div>
 </section>
