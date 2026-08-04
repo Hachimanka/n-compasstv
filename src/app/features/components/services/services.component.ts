@@ -13,8 +13,6 @@ import { ServiceCard } from './services.types';
   styleUrl: './services.component.scss',
 })
 export class ServicesComponent {
-  protected readonly serviceRailIconSrc = 'https://www.figma.com/api/mcp/asset/4f8c6049-3cbe-4862-8583-21b7a96d1398';
-
   /** Service card data */
   protected readonly cards: ReadonlyArray<ServiceCard> = [
     {

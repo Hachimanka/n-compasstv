@@ -32,10 +32,6 @@
   }
 
   &__rail {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: 1rem;
-    align-items: stretch;
     width: min(100%, 68rem);
     margin: 0 auto;
   }
@@ -51,33 +47,10 @@
     gap: 1rem;
     will-change: transform;
     animation: services-marquee 24s linear infinite;
-  }
 
-  &__arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-    width: 2rem;
-    height: 2rem;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    &:hover {
+      animation-play-state: paused;
     }
-  }
-
-  &__arrow--prev img {
-    transform: rotate(180deg);
-  }
-
-  &__arrow--next img {
-    transform: none;
   }
 
   &__card {
@@ -158,10 +131,6 @@
   .services {
     &__rail {
       grid-template-columns: 1fr;
-    }
-
-    &__arrow {
-      display: none;
     }
 
     &__viewport {

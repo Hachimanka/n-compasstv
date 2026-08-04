@@ -7,10 +7,6 @@
   </div>
 
   <div class="services__rail" aria-label="Services cards">
-    <button class="services__arrow services__arrow--prev" type="button" aria-label="Previous services">
-      <img [src]="serviceRailIconSrc" alt="" aria-hidden="true" />
-    </button>
-
     <div class="services__viewport">
       <div class="services__track">
         @for (card of carouselCards; track $index) {
@@ -28,9 +24,5 @@
         }
       </div>
     </div>
-
-    <button class="services__arrow services__arrow--next" type="button" aria-label="Next services">
-      <img [src]="serviceRailIconSrc" alt="" aria-hidden="true" />
-    </button>
   </div>
 </section>

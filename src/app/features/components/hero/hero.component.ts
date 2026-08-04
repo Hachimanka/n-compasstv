@@ -69,6 +69,12 @@ export class HeroComponent implements OnInit, OnDestroy {
     }
   }
 
+  /** Refresh the page when logo is clicked */
+  protected refreshPage(event: Event): void {
+    event.preventDefault();
+    window.location.reload();
+  }
+
   /** Toggle mobile menu visibility */
   protected toggleMobileMenu(): void {
     this.mobileMenuOpen.update((currentValue: boolean) => !currentValue);
