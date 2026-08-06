@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject, signal } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild, inject, signal } from '@angular/core';
 import { Button } from '@ntv360/component-pantry';
 import { StrapiService } from '../../../core/services/strapi.service';
 import { HeroData } from '../../../core/models/site.models';
@@ -35,6 +35,12 @@ export interface HeroTitleLine {
 })
 export class HeroComponent implements OnInit, OnDestroy {
   @ViewChild('bgLogo') bgLogoRef!: ElementRef<HTMLImageElement>;
+
+  /** Current compass rotation angle in degrees */
+  protected compassRotation = 0;
+
+  /** Arrow's default angle offset in the image (points ~45° from north) */
+  private readonly arrowOffset = 45;
 
   /** Mobile menu open state */
   protected readonly mobileMenuOpen = signal<boolean>(false);
@@ -90,6 +96,23 @@ export class HeroComponent implements OnInit, OnDestroy {
       clearInterval(this.typewriterTimerId);
       this.typewriterTimerId = null;
     }
+  }
+
+  /** Rotate compass arrow to follow mouse cursor */
+  @HostListener('document:mousemove', ['$event'])
+  protected onMouseMove(event: MouseEvent): void {
+    const el = this.bgLogoRef?.nativeElement;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const dx = event.clientX - centerX;
+    const dy = event.clientY - centerY;
+
+    const angle = Math.atan2(dx, -dy) * (180 / Math.PI);
+    this.compassRotation = angle - this.arrowOffset;
   }
 
   /** Refresh the page when logo is clicked */

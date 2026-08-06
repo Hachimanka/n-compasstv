@@ -37,16 +37,12 @@
     width: clamp(24rem, 32vw, 40rem);
     height: auto;
     object-fit: contain;
-    transform: translateX(-2rem);
     cursor: pointer;
+    transition: transform 0.1s ease-out;
     animation: logoGrow 800ms ease-out forwards, logoSpin 1s ease-in-out 800ms forwards;
 
     &--loaded {
       animation: none;
-
-      &:hover {
-        animation: logoSpin 1s ease-in-out;
-      }
     }
   }
 

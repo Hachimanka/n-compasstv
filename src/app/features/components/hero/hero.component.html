@@ -72,7 +72,14 @@
     </div>
 
     <div class="hero__bg-logo-wrap">
-      <img class="hero__bg-logo" #bgLogo [src]="heroBgLogoSrc" alt="" aria-hidden="true" />
+      <img
+        class="hero__bg-logo"
+        #bgLogo
+        [src]="heroBgLogoSrc"
+        [style.transform]="'translateX(-2rem) rotate(' + compassRotation + 'deg)'"
+        alt=""
+        aria-hidden="true"
+      />
     </div>
   </div>
 </section>

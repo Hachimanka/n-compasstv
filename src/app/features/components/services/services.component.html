@@ -2,13 +2,14 @@
   <div class="services__intro">
     <h2>Go Beyond the Screens</h2>
     <p>
-      Don’t stop at screens! We help take your dealership to the next level with Multichannel Advertising. This allows you to be a true omni-channel full scale digital marketing agency! We do all of the work in-house, provide analytics and reports to your clients, AND we meet with them every month to explain the results and help you increase their monthly ad spend.
+      Don't stop at screens! We help take your dealership to the next level with Multichannel Advertising. This allows you to be a true omni-channel full scale digital marketing agency! We do all of the work in-house, provide analytics and reports to your clients, AND we meet with them every month to explain the results and help you increase their monthly ad spend.
     </p>
   </div>
 
   <div class="services__rail" aria-label="Services cards">
-    <div class="services__viewport">
-      <div class="services__track">
+    <button class="services__btn" type="button" (click)="setDirection(false)" (pointerdown)="startSpeedUp()" (pointerup)="stopSpeedUp()" (pointerleave)="stopSpeedUp()">&lt;</button>
+    <div class="services__viewport" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+      <div class="services__track" #marqueeTrack>
         @for (card of carouselCards; track $index) {
           <article class="services__card" [style.border-color]="card.borderColor">
             <div class="services__media">
@@ -24,5 +25,6 @@
         }
       </div>
     </div>
+    <button class="services__btn" type="button" (click)="setDirection(true)" (pointerdown)="startSpeedUp()" (pointerup)="stopSpeedUp()" (pointerleave)="stopSpeedUp()">&gt;</button>
   </div>
 </section>

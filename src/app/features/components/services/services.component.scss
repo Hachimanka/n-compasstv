@@ -32,6 +32,9 @@
   }
 
   &__rail {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     width: min(100%, 68rem);
     margin: 0 auto;
   }
@@ -46,11 +49,6 @@
     width: max-content;
     gap: 1rem;
     will-change: transform;
-    animation: services-marquee 24s linear infinite;
-
-    &:hover {
-      animation-play-state: paused;
-    }
   }
 
   &__card {
@@ -125,12 +123,46 @@
     text-decoration: none;
     box-shadow: 0 0.75rem 1.5rem rgba(125, 201, 49, 0.18);
   }
+
+  &__btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 2px solid rgba(125, 201, 49, 0.6);
+    border-radius: 50%;
+    background: rgba(125, 201, 49, 0.08);
+    color: #7dc931;
+    font: 700 1.5rem/1 var(--font-body);
+    cursor: pointer;
+    box-shadow: 0 0 1rem rgba(125, 201, 49, 0.15), inset 0 0 0.75rem rgba(125, 201, 49, 0.05);
+    transition: background-color 200ms ease, color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+
+    &:hover {
+      background: rgba(125, 201, 49, 0.2);
+      border-color: #7dc931;
+      color: #a0e84a;
+      transform: scale(1.1);
+      box-shadow: 0 0 1.5rem rgba(125, 201, 49, 0.3), inset 0 0 1rem rgba(125, 201, 49, 0.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+      background: rgba(125, 201, 49, 0.3);
+    }
+  }
 }
 
 @media (max-width: 1199px) {
   .services {
     &__rail {
-      grid-template-columns: 1fr;
+      flex-direction: column;
+    }
+
+    &__btn {
+      display: none;
     }
 
     &__viewport {
@@ -144,7 +176,7 @@
     }
 
     &__track {
-      animation: none;
+      transform: none !important;
     }
 
     &__card {
@@ -165,12 +197,3 @@
   }
 }
 
-@keyframes services-marquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(calc(-50% - 0.5rem));
-  }
-}
